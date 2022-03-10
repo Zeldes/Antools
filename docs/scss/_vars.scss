@@ -1,0 +1,42 @@
+$bg: #1E252B;
+$btn: #FF6E30;
+$dark-btn: #b44718;
+$default: #9A9D9F;
+$white: #FDF5FF;
+$title: #E8E9E9;
+$subtitle: #9A6C31;
+$border: #2D3339;
+$red: #FD3B41;
+$bg-icon: #283036;
+
+$xl :1280px;
+$ll: 977px;
+$l: 868px;
+$mp: 768px;
+$sm: 586px;
+$s: 375px;
+$ss: 341px;
+
+@mixin max-w($width) {
+  @media (max-width: $width) {
+    @content;
+  }
+  
+}
+
+
+
+%Poppins-400 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+}
+
+%Poppins-500 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+}
+
+%Poppins-600 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}

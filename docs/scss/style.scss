@@ -1,0 +1,846 @@
+@import 'vars';
+@import 'reset';
+@import 'libs';
+@import 'global';
+
+
+
+.header {
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  z-index: 99;
+  background-color: $bg;
+  padding: 26px 0;
+  transition: all 0.4s;
+  @include max-w($s) {
+    padding: 16px 0;
+  }
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.header--show {
+  background-color: $border;
+}
+
+.menu {
+  @extend %Poppins-400;
+  display: flex;
+
+  @include max-w($xl) {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    padding-top: 100px;
+    height: 100vh;
+    flex-direction: column;
+    overflow: scroll;
+    background-color: $bg;
+
+    transform: translateY(-200%);
+    transition: transform 1s;
+    z-index: 10;
+    color: $title;
+    font-size: 20px;
+  }
+
+  &__list {
+    display: flex;
+    margin-right: 190px;
+
+    @include max-w($xl) {
+      flex-direction: column;
+      align-items: center;
+      margin-right: 0;
+      margin-bottom: 150px;
+    }
+
+    @include max-w($s) {
+      align-items: flex-start;
+    }
+  }
+
+  &__item {
+    margin-right: 40px;
+    position: relative;
+  }
+
+  .menu__sublist--active {
+    display: block;
+  }
+
+  &__link {
+    @include max-w($xl) {
+      display: block;
+      padding: 12px;
+    }
+  }
+
+  &__link--list {
+    position: relative;
+    padding-right: 10px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      background-image: url('../images/icons/vector.svg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      top: 43%;
+      right: -10%;
+      width: 12px;
+      height: 6px;
+
+      @include max-w($xl) {
+        transform: rotate(-90deg);
+        top: 48%;
+      }
+    }
+  }
+
+  &__sublist {
+    color: $white;
+    position: absolute;
+    display: none;
+    background-color: #414B56;
+    transition: all 0.4s;
+    border: 1px solid $white;
+    width: 120px;
+
+    @include max-w($xl) {
+      top: 0;
+      left: 150px;
+      width: 100px;
+    }
+
+    @include max-w($s) {
+      top: -40px;
+      left: 189px;
+    }
+  }
+
+  &__subitem:not(:last-child) {
+    margin-bottom: 4px;
+  }
+
+  &__sublink {
+    padding: 6px;
+    font-size: 15px
+  }
+}
+
+.menu--active {
+  transform: translateY(0);
+}
+
+
+
+
+.login {
+  @extend %Poppins-600;
+
+  @include max-w($xl) {
+    margin: 0 auto;
+  }
+}
+
+.login__link {
+  margin-right: 40px;
+}
+
+.login__btn {
+  padding: 12px 28px;
+}
+
+
+.hero {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: right;
+  min-height: 100vh;
+
+  &__content {
+    padding-top: 200px;
+    max-width: 554px;
+    margin-bottom: 110px;
+
+    @include max-w($s) {
+      padding-top: 150px;
+      max-width: 554px;
+    }
+  }
+
+  &__title {
+    @extend %Poppins-500;
+    font-size: 50px;
+    line-height: 1.4;
+    color: $white;
+    margin-bottom: 30px;
+
+    @include max-w($sm) {
+      font-size: 40px;
+    }
+
+    @include max-w($s) {
+      font-size: 30px;
+    }
+  }
+
+  &__text {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 60px;
+    max-width: 486px;
+
+    @include max-w($sm) {
+      font-size: 16px;
+    }
+  }
+
+  &__search {
+    max-width: 498px;
+    @include max-w($ss) {
+      background-color: inherit;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  }
+
+  &__search--icon {
+    @include max-w($sm) {
+      display: none;
+    }
+  }
+
+  &__search--input {
+    flex-basis: 61%;
+    @include max-w($ss) {
+      background-color: $bg;
+      
+    }
+    &::placeholder {
+      @include max-w($sm) {
+        font-size: 14px;
+      }
+
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 2px $btn;
+    }
+  }
+
+  &__search--btn {
+    padding: 12px 36px;
+
+    @include max-w($sm) {
+      padding: 10px 24px;
+    }
+
+    @include max-w($s) {
+      padding: 10px;
+    }
+  }
+}
+
+.social {
+  width: 190px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+
+  &__icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    transition: all 0.4s;
+    padding: 2px;
+    outline: 0;
+    &:hover {
+      transform: scale(1.1);
+      background-color: $btn;
+
+    }
+  }
+}
+
+
+.popular {
+  padding: 200px 0;
+
+  @include max-w($sm) {
+    padding: 100px 0;
+  }
+
+  &__box {
+    text-align: center;
+  }
+
+  &__link {
+    padding: 17px 38px;
+    border: 1px solid $border;
+    color: $btn;
+    transition: all 0.4s;
+
+    &:hover {
+      background-color: $btn;
+      color: $white;
+    }
+  }
+}
+
+.cards {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 100px;
+
+  @include max-w($xl) {
+    justify-content: center;
+  }
+}
+
+.card {
+  display: block;
+  padding: 33px;
+  max-width: 392px;
+  border-radius: 15px;
+  border: 1px solid $bg;
+  margin-bottom: 100px;
+  transition: all 0.4s;
+
+  @include max-w($s) {
+    margin-bottom: 70px;
+  }
+
+  &:last-child {
+    @include max-w($s) {
+      margin-bottom: 0;
+    }
+  }
+
+  &:hover {
+    background-color: rgba(40, 48, 54, 0.6);
+    border: 1px solid $border;
+    margin-top: -10px;
+
+    .card__btn {
+      background-color: $btn;
+      color: $white;
+    }
+
+    .card__subtitle {
+      color: #FFA537;
+    }
+  }
+
+  &__title {
+    position: relative;
+    @extend %Poppins-500;
+    color: $title;
+    font-size: 24px;
+    line-height: 1.5;
+    padding-left: 94px;
+    margin-bottom: 30px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 64px;
+      height: 64px;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+  }
+
+  &__title--figma::before {
+    background-image: url(../images/icons/figma.svg);
+  }
+
+  &__title--sketch::before {
+    background-image: url(../images/icons/sketch.svg);
+  }
+
+  &__title--vsc::before {
+    background-image: url(../images/icons/vsc.svg);
+  }
+
+  &__title--notion::before {
+    background-image: url(../images/icons/notion.svg);
+  }
+
+  &__title--slack::before {
+    background-image: url(../images/icons/slack.svg);
+  }
+
+  &__title--invision::before {
+    background-image: url(../images/icons/invision.svg);
+  }
+
+  &__subtitle {
+    display: block;
+    font-size: 18px;
+    line-height: 27px;
+    color: $subtitle;
+  }
+
+  &__text {
+    margin-bottom: 30px;
+  }
+
+  &__bot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__icon {
+    display: inline-flex;
+    margin-right: 20px;
+    border-radius: 8px;
+    background-color: inherit;
+    border-radius: 8px;
+    padding: 8px;
+
+    &:hover {
+      background-color: $bg-icon;
+
+      path {
+        fill: $red;
+        fill-opacity: 0.90;
+      }
+    }
+  }
+
+  &__icon-pack {
+    opacity: 0.5;
+    transition: all 0.4s;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &__btn {
+    padding: 9px 35px;
+    transition: all 0.4s;
+    border-radius: 8px;
+  }
+}
+
+.brand {
+  &__inner {
+    text-align: center;
+    padding: 56px 83px;
+    border-radius: 25px;
+    border: 1px solid $bg-icon;
+
+    @include max-w($mp) {
+      padding: 56px 60px;
+    }
+  }
+
+  &__title {
+    @extend %Poppins-600;
+    font-size: 24px;
+    line-height: 36px;
+    color: $title;
+    margin-bottom: 55px;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    @include max-w($ll) {
+      align-items: center;
+    }
+  }
+
+  &__item {
+    @include max-w($ll) {
+      margin-bottom: 20px;
+      margin-right: 20px;
+    }
+
+    @include max-w($s) {
+      align-items: center;
+      margin-right: 0px;
+    }
+
+    &:last-child {
+      @include max-w($s) {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+
+.new {
+  padding: 200px 0;
+
+  @include max-w($ll) {
+    padding: 100px 0;
+  }
+
+  @include max-w($sm) {
+    padding: 80px 0;
+  }
+
+  @include max-w($s) {
+    padding: 60px 0;
+  }
+}
+
+.new__inner {
+  display: flex;
+
+  @include max-w($xl) {
+    flex-wrap: wrap;
+  }
+}
+
+.section-top--new {
+  max-width: 427px;
+  text-align: inherit;
+  margin-right: 197px;
+
+  @include max-w($xl) {
+    margin: 0 auto 60px auto;
+  }
+}
+
+.section-top__text--new {
+  margin-bottom: 60px;
+  padding: 0;
+}
+
+.cards-new {
+  display: flex;
+  flex-wrap: wrap;
+
+  @include max-w($xl) {
+    justify-content: center;
+  }
+}
+
+.card-new {
+  padding: 28px 21px;
+  max-width: 288px;
+
+  &:nth-child(odd) {
+    margin-right: 24px;
+  }
+}
+
+.card__title--zeplin::before {
+  background-image: url('../images/icons/zeplin.svg');
+}
+
+.card__title--php::before {
+  background-image: url('../images/icons/phpstorm.svg');
+}
+
+.card__title--toolbox::before {
+  background-image: url('../images/icons/toolbox.svg');
+}
+
+.card__title--procreate::before {
+  background-image: url('../images/icons/procreate.svg');
+}
+
+
+.slider {
+  &__item {
+    position: relative;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 100px;
+
+    @include max-w($ll) {
+      justify-content: center;
+      flex-direction: column;
+      margin-bottom: 20px;
+    }
+  }
+
+  &__names {
+    @extend %Poppins-400;
+    line-height: 1.5;
+    position: absolute;
+    top: 402px;
+    left: 22%;
+    background-color: #2A3139;
+    padding: 10px 22px 16px 22px;
+    border: 1px solid $border;
+    border-radius: 8px;
+
+    @include max-w($ll) {
+      left: 36%;
+    }
+
+    @include max-w($ll) {
+      top: 269px;
+      left: 40%;
+    }
+
+    @include max-w($sm) {
+      top: 231px;
+      left: 30%;
+      padding: 8px;
+    }
+  }
+
+  &__text--name {
+    font-size: 26px;
+    color: $title;
+
+    @include max-w($ll) {
+      font-size: 18px;
+    }
+  }
+
+  &__text--subname {
+    display: block;
+  }
+
+  &__img {
+    position: relative;
+
+    @include max-w($ll) {
+      width: 290px;
+    }
+
+    @include max-w($sm) {
+      width: 250px;
+    }
+  }
+
+  &__text {
+    position: relative;
+    max-width: 393px;
+    font-size: 14px;
+    padding: 22px;
+
+    &::before {
+      position: absolute;
+      content: '';
+      width: 24px;
+      height: 20px;
+      background-image: url('../images/icons/quote-r.svg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      top: 0%;
+      left: 0%;
+    }
+
+    &::after {
+      position: absolute;
+      content: '';
+      width: 24px;
+      height: 20px;
+      background-image: url('../images/icons/quote-l.svg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      bottom: 0%;
+      right: 0%;
+    }
+  }
+
+  &__btn--prev {
+    position: absolute;
+    top: 36%;
+    left: 4%;
+    z-index: 10;
+
+    @include max-w($ll) {
+      top: 30%;
+      left: 15%;
+    }
+
+    @include max-w($sm) {
+      top: 30%;
+      left: 5%;
+    }
+
+  }
+
+  &__btn--next {
+    position: absolute;
+    top: 36%;
+    right: 4%;
+    z-index: 10;
+
+    @include max-w($ll) {
+      top: 30%;
+      right: 15%;
+    }
+
+    @include max-w($sm) {
+      top: 30%;
+      right: 5%;
+    }
+
+  }
+}
+
+.slick-dots {
+  display: flex;
+  justify-content: center;
+
+  li {
+    margin: 0;
+
+    button {
+      padding: 0;
+      font-size: 0;
+      position: relative;
+      margin-right: 18px;
+        width: 44px;
+        height: 6px;
+        border-radius: 4px;
+        background-color: #2A3139;
+        
+      
+    }
+
+    &.slick-active {
+      button {
+          background-color: $btn;
+          height: 8px;
+      }
+    }
+  }
+}
+
+.join {
+  padding: 200px 0;
+
+  @include max-w($ll) {
+    padding: 100px 0;
+  }
+
+  @include max-w($sm) {
+    padding: 80px 0;
+  }
+
+  @include max-w($s) {
+    padding: 60px 0;
+  }
+
+  &__input-box {
+    max-width: 550px;
+    margin: 0 auto;
+
+    @include max-w($ss) {
+      background-color: inherit;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+  }
+
+  &__input {
+    max-width: 400px;
+    flex-basis: 60%;
+
+    @include max-w($ss) {
+      background: $border;
+      margin-bottom: 10px;
+    }
+  }
+
+  &__btn {
+    padding: 12px 36px;
+
+    @include max-w($sm) {
+      padding: 10px 24px;
+    }
+
+    @include max-w($s) {
+      padding: 10px;
+    }
+  }
+}
+
+.footer {
+  border-top: 1px solid $border;
+}
+
+.footer-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 70px 0;
+
+  @include max-w($mp) {
+    justify-content: space-around;
+  }
+
+  @include max-w($sm) {
+    flex-direction: column;
+  }
+
+  &__info {
+    max-width: 260px;
+
+    @include max-w($l) {
+      margin-bottom: 30px;
+    }
+  }
+
+  &__logo {
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+
+  &__box {
+    max-width: 200px;
+
+    @include max-w($l) {
+      margin-right: 20px;
+    }
+
+    @include max-w($sm) {
+      margin-right: 0;
+
+      &:not(:last-child) {
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  &__title {
+    @extend %Poppins-400;
+    color: $title;
+    margin-bottom: 20px;
+    font-size: 20px;
+    line-height: 1.5;
+  }
+
+  &__item:not(:last-child) {
+    margin-bottom: 10px;
+  }
+}
+
+.footer-bot {
+  padding: 20px 0;
+  border-top: 1px solid $border;
+  text-align: center;
+}
